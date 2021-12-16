@@ -1,6 +1,9 @@
 :root {
   --subdued-color: #777;
   --text-color: #333;
+  --avatar-size: 50px;
+  --grid-gap: 1rem;
+  --group-header-spacing: 1rem;
 }
 
 *,
@@ -9,15 +12,67 @@
   box-sizing: border-box;
 }
 
-.avatar {
-  width: 50px;
-  height: 50px;
+
+
+.notification-section {
+  margin-bottom: 2rem;
+}
+
+.notification-section:last-child {
+  margin-bottom: 0;
+}
+
+.group-header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--subdued-color);
+  padding: 0.25rem;
+  margin: var(--group-header-spacing);
+}
+
+.group-date {
+  color: var(--subdued-color);
 }
 
 .avatar {
+  position: relative;
+}
+
+.avatar > img {
   width: 100%;
   border-radius: 100%;
   border: 2px solid white;
+  display: block;
+}
+
+.avatar::after {
+  content: '';
+  position: absolute;
+  background-color: var(--subdued-color);
+  width: 1px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  top: var(--avatar-size);
+  bottom: calc(var(--grid-gap) * (-1));
+}
+
+/*
+.avatar:first-child::before {
+  content: '';
+  position: absolute;
+  background-color: var(--subdued-color);
+  width: 1px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  top: calc(-1 * var(--avatar-size));
+  bottom: 100%;
+}
+*/
+
+.avatar:nth-last-child(2)::after {
+  display: none;
 }
 
 body {
@@ -27,23 +82,12 @@ body {
 
 .notification-grid {
   display: grid;
-  position: relative;
-  grid-template-columns: 50px 1fr;
+  grid-template-columns: var(--avatar-size) 1fr;
   grid-auto-rows: auto;
-  gap: 1rem;
-}
-
-.notification-grid::before {
-  content: '';
-  position: absolute;
-  grid-column: 1 / 2;
-  background-color:var(--subdued-color);
-  left:0;
-  right:0;
-  margin:0 auto;
-  width: 2px;
-  height: 100%;
-  z-index:-1;
+  gap: var(--grid-gap);
+  max-width: 750px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .notification-card {
