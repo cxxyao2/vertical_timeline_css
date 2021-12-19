@@ -12,8 +12,6 @@
   box-sizing: border-box;
 }
 
-
-
 .notification-section {
   margin-bottom: 2rem;
 }
@@ -57,7 +55,6 @@
   bottom: calc(var(--grid-gap) * (-1));
 }
 
-/*
 .avatar:first-child::before {
   content: '';
   position: absolute;
@@ -66,10 +63,9 @@
   left: 0;
   right: 0;
   margin: 0 auto;
-  top: calc(-1 * var(--avatar-size));
-  bottom: 100%;
+  top: calc(-1 * var(--group-header-spacing));
+  bottom:  100%;
 }
-*/
 
 .avatar:nth-last-child(2)::after {
   display: none;
